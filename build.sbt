@@ -23,3 +23,7 @@ libraryDependencies += "mysql" % "mysql-connector-java" % "5.1.41"
 
 // Make verbose tests
 testOptions in Test := Seq(Tests.Argument(TestFrameworks.JUnit, "-a", "-v"))
+
+libraryDependencies ++= Seq(
+  "org.webjars" % "bootstrap" % "3.3.7"
+)
