@@ -12,6 +12,13 @@ Run this using [sbt](http://www.scala-sbt.org/).  If you downloaded this project
 sbt run
 ```
 
+```
+int fibo(n){
+  if(n==0) return 0;
+  if(n==1) return 1;
+  return fibo(n-1) | fibo(n-2);
+}
+```
 And then go to http://localhost:9000 to see the running web application.
 
 ## Controllers
