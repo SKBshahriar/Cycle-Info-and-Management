@@ -1,0 +1,86 @@
+.nav.navbar-nav li a {
+    color: white;
+    font-family: cursive;
+}
+
+.nav.navbar-nav li a:hover{
+    background-color:#116ba7;
+}
+.navbar-brand {
+    color: white;
+}
+.navbar-brand:hover{
+    background-color:#0e7ec9;
+    color: white;
+}
+.footer {
+    background:#616f7e;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 6%;
+}
+
+.footer ul {
+    padding: 10px;
+}
+
+.footer ul li {
+    color: white;
+}
+
+.footer ul li a {
+    color: white;
+}
+.slider_pic{
+    width: 100%;
+}
+#navB{
+    background-color: #0e7ec9;
+}
+
+#custom-search-input{
+    width: 60%;
+    margin-left: 20%;
+    margin-top: 2%;
+    margin-bottom: 3.5%;
+}
+#slider{
+    width: 60%;
+}
+#loginForm{
+    margin-left: 40%;
+    margin-right: 40%;
+    margin-bottom: 15%;
+    width: 20%;
+}
+#loginImg{
+    height: 150px;
+    margin-top: 4%;
+    margin-left: 45%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

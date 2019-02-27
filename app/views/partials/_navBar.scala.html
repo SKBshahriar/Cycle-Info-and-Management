@@ -1,0 +1,30 @@
+@()
+
+<nav class="navbar " style="background-color:#0e7ec9">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">CycleInfo</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="active">
+                <a href="new.php"> Profile</a>
+            </li>
+            <li>
+                <a href="myCycles.php">My Cycles</a>
+            </li>
+            <li>
+                <a href="buyCycle.php">Buy Cycles</a>
+            </li>
+
+        </ul>
+        <form class="navbar-form navbar-left" action="/action_page.php">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Search User" name="search">
+            </div>
+            <button type="submit" class="btn btn-default">Search</button>
+        </form>
+        <form class="navbar-form navbar-right" method="post" action="index.php">
+            <button type="submit" class="btn btn-default" style="background: none;border: none;color: white;">Sign Out</button>
+        </form>
+    </div>
+</nav>
