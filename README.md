@@ -11,7 +11,6 @@ Run this using [sbt](http://www.scala-sbt.org/).  If you downloaded this project
 ```
 sbt run
 ```
-
 And then go to http://localhost:9000 to see the running web application.
 
 ## Controllers
