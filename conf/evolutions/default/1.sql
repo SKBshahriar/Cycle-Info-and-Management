@@ -8,7 +8,7 @@ create table cycles (
   brand                         varchar(255),
   model                         varchar(255) not null,
   price                         double,
-  date_of_buy                   datetime(6),
+  date_of_buy                   date,
   for_sale                      tinyint(1) default 0 not null,
   users_nid                     varchar(255),
   constraint pk_cycles primary key (chassis_number)

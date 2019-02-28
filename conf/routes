@@ -16,3 +16,8 @@ GET     /                           controllers.CycleController.index()
 POST    /login                      controllers.CycleController.login()
 
 GET     /logout                     controllers.CycleController.logout()
+
+GET     /add                        controllers.CycleController.addCycle()
+
+POST    /save                       controllers.CycleController.saveCycle()
+
