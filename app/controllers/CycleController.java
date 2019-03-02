@@ -2,6 +2,7 @@ package controllers;
 
 import models.Cycles;
 import models.Users;
+import play.Environment;
 import play.data.DynamicForm;
 import play.data.FormFactory;
 import play.mvc.Controller;
@@ -21,6 +22,8 @@ import java.nio.file.*;
 public class CycleController extends Controller {
     @Inject
     FormFactory formFactory;
+    @Inject
+    Environment environment;
     public Result index(){
         String loggedin = session("loggedin");
         if(loggedin != null) return ok(home.render());
@@ -75,11 +78,13 @@ public class CycleController extends Controller {
             Http.MultipartFormData.FilePart<File> picture = body.getFile("photo");
             if (picture != null) {
 //                String fileName = picture.getFilename();
-//                String contentType = picture.getContentType();
-                File file = picture.getFile();
+//                String contentType = picture.getContentType()
 //                Files.deleteIfExists(file.toPath());
+                File file = picture.getFile();
                 try {
-                    Path temp = Files.move(Paths.get(file.toPath()+""), Paths.get("E:/IDE Workspaces/intelij/Cycle_Info_and_Management/public/images/cycle_pic/"+chassis_number+".jpg"));
+                    String path = environment.getFile("/public/images/cycle_pic/"+chassis_number+".jpg").toPath()+"";
+                    Files.move(Paths.get(file.toPath()+""), Paths.get(path));
+
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
