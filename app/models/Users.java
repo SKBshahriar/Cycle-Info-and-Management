@@ -19,7 +19,19 @@ public class Users extends Model {
     public String thana;
     public String password;
     public String phone;
+    public String name;
 
+    public Users(String nid, String email, String district, String thana, String password, String phone, String name) {
+        this.nid = nid;
+        this.email = email;
+        this.district = district;
+        this.thana = thana;
+        this.password = password;
+        this.phone = phone;
+        this.name = name;
+    }
+
+    public Users(){}
 
     public static final Finder<String, Users> find = new Finder<>(Users.class);
 

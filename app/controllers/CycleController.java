@@ -1,5 +1,6 @@
 package controllers;
 
+import io.ebean.Expr;
 import models.Cycles;
 import models.Users;
 import play.Environment;
@@ -17,6 +18,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.nio.file.Files;
 import java.nio.file.*;
+import java.util.List;
 
 
 public class CycleController extends Controller {
@@ -91,6 +93,59 @@ public class CycleController extends Controller {
             }
             flash("success","Cycle added successfully");
             return redirect(routes.CycleController.addCycle());
+        }
+    }
+
+    public Result showMyCycles(){
+        String loggedin = session("loggedin");
+        if(loggedin == null) return redirect(routes.CycleController.index());
+        List<Cycles> cycles = Cycles.find.query().where().eq("users_nid",session("nid")).findList();
+        int ofset = 0, cyclesPerPage = 5, numOfPage = 1, totCycles = cycles.size();
+        if(totCycles % cyclesPerPage == 0) numOfPage = totCycles / cyclesPerPage;
+        else numOfPage = (totCycles / cyclesPerPage) + 1;
+        String str = request().getQueryString("page");
+        int start = 1, end = 1, page = 1;
+        if(str != null){
+            page = Integer.parseInt(str);
+            ofset = (page - 1) * 5;
+            if(page > 2) start = page - 2;
+        }
+        int limit = ofset + 5;
+        if(totCycles - ofset < 5) limit = totCycles;
+        if((numOfPage - start) >= 4) end = start + 4;
+        else {
+            end = numOfPage;
+            if(numOfPage >= 5) start = numOfPage - 4;
+            else start = 1;
+        }
+        return ok(myCycles.render(cycles,start,end,ofset,limit,page));
+    }
+
+    public Result signup(){
+        String loggedin = session("loggedin");
+        if(loggedin != null) return redirect(routes.CycleController.index());
+        return ok(signup.render());
+    }
+
+    public Result signupAuthenticate(){
+        DynamicForm form = formFactory.form().bindFromRequest();
+        String nid = form.get("nid");
+        String email = form.get("email");
+        Users user = Users.find.query().where().or(Expr.eq("nid",nid),Expr.eq("email",email)).findOne();
+        if(user != null){
+            flash("duplicate","This nid or email already exist");
+            return ok(signup.render());
+        }
+        else {
+            String district = form.get("district");
+            String thana = form.get("thana");
+            String phone = form.get("phone");
+            String password = form.get("pass");
+            String name = form.get("name");
+            Users users = new Users(nid,email,district,thana,password,phone,name);
+            users.save();
+            flash("success","Sign up successful");
+            return redirect(routes.CycleController.index());
         }
     }
 }

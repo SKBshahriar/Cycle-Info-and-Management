@@ -21,6 +21,7 @@ create table users (
   thana                         varchar(255),
   password                      varchar(255),
   phone                         varchar(255),
+  name                          varchar(255),
   constraint pk_users primary key (nid)
 );
 

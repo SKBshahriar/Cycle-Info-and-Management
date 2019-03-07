@@ -28,7 +28,9 @@
                     <li>
                         <a href="#">Help</a>
                     </li>
+
                 </ul>
+
                 <ul class="nav navbar-nav navbar-right">
                     <li>
                         <a href="@routes.CycleController.signup()">Sign Up</a>
@@ -37,28 +39,46 @@
             </div>
         </nav>
 
-        @if(flash.containsKey("success")){
-            <div class="alert alert-success" id="alrt">
-                @flash.get("success")
+        @if(flash.containsKey("duplicate")){
+            <div class="alert alert-danger" id="alrt">
+                @flash.get("duplicate")
                 <a href="#" class="close" data-dismiss="alert" aria-label="close"><i class="glyphicon glyphicon-remove"></i></a>
             </div>
         }
-
         <div>
-            <img src="@routes.Assets.versioned("images/login.png")" id="loginImg">
+            <img src="@routes.Assets.versioned("images/signup.jpg")" id="loginImg">
         </div>
-
         <div id="loginForm">
-            <form action="@helper.CSRF(routes.CycleController.login())" method="post">
+            <form action="@helper.CSRF(routes.CycleController.signupAuthenticate())" method="post">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Name</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" name="name" aria-describedby="emailHelp" placeholder="Name">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">NID Number</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" name="nid" aria-describedby="emailHelp" placeholder="Enter NID">
+                </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Email address</label>
                     <input type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp" placeholder="Enter email">
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" name="pass" placeholder="Password">
+                    <label for="exampleInputEmail1">District</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" name="district" aria-describedby="emailHelp" placeholder="Enter District">
                 </div>
-                <button type="submit" class="btn btn-primary">Log in</button>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Thana</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" name="thana" aria-describedby="emailHelp" placeholder="Enter Thana">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Phone Number</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" name="phone" aria-describedby="emailHelp" placeholder="Enter Phone Number">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" name="pass" placeholder="Enter Password">
+                </div>
+                <button type="submit" class="btn btn-primary">Sign Up</button>
             </form>
         </div>
 

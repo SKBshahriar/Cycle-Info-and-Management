@@ -21,3 +21,8 @@ GET     /add                        controllers.CycleController.addCycle()
 
 POST    /save                       controllers.CycleController.saveCycle()
 
+GET     /mycycles                   controllers.CycleController.showMyCycles()
+
+GET     /signup                     controllers.CycleController.signup()
+
+POST    /signup                     controllers.CycleController.signupAuthenticate()

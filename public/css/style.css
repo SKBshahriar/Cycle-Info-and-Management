@@ -64,7 +64,28 @@
     margin: 0% 20%;
 }
 
-
+#cycleDiv{
+    background-color: #cccccc;
+    margin: 2% 30%;
+}
+#innerCycleDiv{
+    width: 85%;
+    height: 100%;
+    float: left;
+}
+#innerCycleImageDiv{
+    background-color: #898B5E;
+    width: 15%;
+    margin-left: 85%;
+}
+#cycleImg{
+    width: 100px;
+    height: 100px;
+}
+#curentPage{
+    background-color: #337ab7;
+    color: white;
+}
 
 
 

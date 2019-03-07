@@ -1,0 +1,27 @@
+@(cycles: List[Cycles], start: Int, end: Int, ofset: Int, limit: Int, page: Int)
+@layout("My Cycles"){
+    @for(i <- ofset until limit){
+        <div id="cycleDiv">
+            <div id="innerCycleDiv">
+                <p>Brand: @cycles(i).brand</p>
+                <p>Chassis Number: @cycles(i).chassis_number</p>
+                <p>Price: @cycles(i).price</p>
+                <p><button class="btn btn-primary btn-sm">View</button></p>
+            </div>
+            <div id="innerCycleImageDiv">
+                <img id="cycleImg" src="@routes.Assets.versioned("images/cycle_pic/"+cycles(i).chassis_number+".jpg")">
+            </div>
+        </div>
+    }
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            @for(i <- start until end+1){
+                @if(i == 1){
+                    <li class="page-item"><a class="page-link" @if(i == page){id="curentPage" } href="@routes.CycleController.showMyCycles()">@i</a></li>
+            }else{
+                    <li class="page-item"><a class="page-link" @if(i == page){id="curentPage" } href="\mycycles?page=@i">@i</a></li>
+                }
+            }
+        </ul>
+    </nav>
+}
