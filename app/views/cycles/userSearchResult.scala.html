@@ -1,0 +1,25 @@
+@(users: List[Users], start: Int, end: Int, ofset: Int, limit: Int, page: Int, name: String)
+@layout("Search Result"){
+    <div id="cycleDiv">
+    @for(i <- ofset until limit){
+        <div class="col-md-2">
+            <p>Name: @users(i).name</p>
+            <p>District: @users(i).district</p>
+            <p>Thana: @users(i).thana</p>
+            <p>NID: @users(i).nid</p>
+            <p><a class="link-button" href="\profile?id=@users(i).nid">Show Details</a></p>
+        </div>
+    }
+    </div>
+    <nav aria-label="Page navigation example" id="pagination-bar">
+        <ul class="pagination">
+        @for(i <- start until end+1){
+            @if(i == 1){
+                <li class="page-item"><a class="page-link" @if(i == page){id="curentPage" } href="\search?name=@name">@i</a></li>
+            }else{
+                <li class="page-item"><a class="page-link" @if(i == page){id="curentPage" } href="\search?name=@name&page=@i">@i</a></li>
+            }
+        }
+        </ul>
+    </nav>
+}

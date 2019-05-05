@@ -1,0 +1,62 @@
+@(cycle: Cycles)
+@import java.text.SimpleDateFormat
+@import helper._
+@layout("Edit Cycle Info"){
+    @if(flash.containsKey("duplicate")){
+        <div class="alert alert-danger" id="alrt">
+            @flash.get("duplicate")
+            <a href="#" class="close" data-dismiss="alert" aria-label="close"><i class="glyphicon glyphicon-remove"></i></a>
+        </div>
+    }
+    @if(flash.containsKey("success")){
+        <div class="alert alert-success">
+            @flash.get("success")
+            <a href="#" class="close" data-dismiss="alert" aria-label="close"><i class="glyphicon glyphicon-remove"></i></a>
+        </div>
+    }
+    @if(flash.containsKey("pic")){
+        <div class="alert alert-success">
+            @flash.get("pic")
+            <a href="#" class="close" data-dismiss="alert" aria-label="close"><i class="glyphicon glyphicon-remove"></i></a>
+        </div>
+    }
+    @if(flash.containsKey("notfound")){
+        <div class="alert alert-danger" id="alrt">
+            @flash.get("notfound")
+            <a href="#" class="close" data-dismiss="alert" aria-label="close"><i class="glyphicon glyphicon-remove"></i></a>
+        </div>
+    }else{
+
+        <div id="addCycleForm">
+            <h1>Update Cycle Info</h1>
+            <form action="@CSRF(routes.CycleController.saveUpdate())" enctype="multipart/form-data" method="post">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">chassis number</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" value="@cycle.chassis_number" aria-describedby="emailHelp" placeholder="chassis number" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">brand</label>
+                    <input type="text" class="form-control" id="exampleInputPassword1" value="@cycle.brand" name="brand" placeholder="brand">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">model</label>
+                    <input type="text" class="form-control" id="exampleInputPassword1" value="@cycle.model" name="model" placeholder="model">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">price</label>
+                    <input type="text" class="form-control" id="exampleInputPassword1" value="@cycle.price" name="price"  placeholder="price">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">date of buy</label>
+                    <input type="date" class="form-control" id="exampleInputPassword1" value="@{new SimpleDateFormat("yyyy-MM-dd").format(cycle.date_of_buy)}" name="date">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">add photo</label>
+                    <input type="file" class="form-control" id="exampleInputPassword1" name="photo">
+                </div>
+                <input type="hidden" value="@cycle.chassis_number" name="chassis_number" >
+                <button type="submit" class="btn btn-primary">Update</button>
+            </form>
+        </div>
+    }
+}

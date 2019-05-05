@@ -1,0 +1,43 @@
+@(cycle: Cycles)
+@import helper._
+@layout("Post an Ad"){
+    @if(flash.containsKey("notfound")){
+        <div class="alert alert-danger" id="alrt">
+            @flash.get("notfound")
+            <a href="#" class="close" data-dismiss="alert" aria-label="close"><i class="glyphicon glyphicon-remove"></i></a>
+        </div>
+    }else{
+        <h1>Post An Ad</h1>
+        <div id="loginForm">
+            <form action="@CSRF(routes.MarketController.saveAd())" enctype="multipart/form-data" method="post">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Description</label>
+                    <textarea class="form-control" rows="5" name="description" placeholder="Write description" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Price</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" name="price" aria-describedby="emailHelp" placeholder="Enter Price" required>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">District</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" name="district" aria-describedby="emailHelp" value="@cycle.users.district" placeholder="Enter District" required>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Thana</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" name="thana" aria-describedby="emailHelp" value="@cycle.users.thana" placeholder="Enter Thana" required>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Phone Number</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" name="phone" aria-describedby="emailHelp" value="@cycle.users.phone" placeholder="Enter Phone Number" required>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">add photo</label>
+                    <input type="file" id="files" class="form-control" id="exampleInputPassword1" name="photos[]" multiple>
+                </div>
+                <input type="hidden" value="@cycle.chassis_number" name="chassis_number">
+                <input type="hidden" value="@cycle.users.nid" name="user">
+                <button type="submit" class="btn btn-primary">Post</button>
+            </form>
+        </div>
+    }
+}

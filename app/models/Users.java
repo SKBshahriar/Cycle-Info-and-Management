@@ -35,7 +35,10 @@ public class Users extends Model {
 
     public static final Finder<String, Users> find = new Finder<>(Users.class);
 
-    @OneToMany(mappedBy = "users")
+    @OneToMany(mappedBy = "users",cascade = CascadeType.ALL)
     public List<Cycles> cycles = new ArrayList<>();
+
+    @OneToMany(mappedBy = "users",cascade = CascadeType.ALL)
+    public List<Ads> ads = new ArrayList<>();
 
 }

@@ -1,57 +1,8 @@
-.nav.navbar-nav li a {
-    color: white;
-    font-family: cursive;
-}
-
-.nav.navbar-nav li a:hover{
-    background-color:#116ba7;
-}
-.navbar-brand {
-    color: white;
-}
-.navbar-brand:hover{
-    background-color:#0e7ec9;
-    color: white;
-}
-.footer {
-    background:#616f7e;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 6%;
-}
-
-.footer ul {
-    padding: 10px;
-}
-
-.footer ul li {
-    color: white;
-}
-
-.footer ul li a {
-    color: white;
-}
-.slider_pic{
-    width: 100%;
-}
-#navB{
-    background-color: #0e7ec9;
-}
-
-#custom-search-input{
-    width: 60%;
-    margin-left: 20%;
-    margin-top: 2%;
-    margin-bottom: 3.5%;
-}
-#slider{
-    width: 60%;
+body{
+    background-color: #f2f2f2;
 }
 #loginForm, #addCycleForm{
-    margin-left: 40%;
-    margin-right: 40%;
-    margin-bottom: 15%;
+    margin: auto;
     width: 20%;
 }
 #loginImg{
@@ -65,8 +16,10 @@
 }
 
 #cycleDiv{
-    background-color: #cccccc;
-    margin: 2% 30%;
+    background-color: #898B5E;
+    margin-left: 17%;
+    margin-top: 3%;
+    width: 1300px;
 }
 #innerCycleDiv{
     width: 85%;
@@ -74,28 +27,73 @@
     float: left;
 }
 #innerCycleImageDiv{
-    background-color: #898B5E;
-    width: 15%;
-    margin-left: 85%;
+
 }
 #cycleImg{
     width: 100px;
-    height: 100px;
+    height: 150px;
 }
 #curentPage{
     background-color: #337ab7;
     color: white;
 }
+#pagination-bar{
+    margin-top: 0;
+}
+#userimg{
+    width: 250px;
+    height: 250px;
+}
+input[type="file"] {
+    display: block;
+}
+.imageThumb {
+    max-height: 75px;
+    border: 2px solid;
+    padding: 1px;
+    cursor: pointer;
+}
+.pip {
+    display: inline-block;
+    margin: 10px 10px 0 0;
+}
+.remove {
+    display: block;
+    background: #444;
+    border: 1px solid black;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+}
+.remove:hover {
+    background: white;
+    color: black;
+}
+.cycle-img-card{
+    height: 200px;
+}
+.search-result{
+    padding: 20px 7%;
+    min-height: 90vh;
+}
 
-
-
-
-
-
-
-
-
-
+.main-container{
+    height: 100%;
+    min-height: 100vh;
+}
+.main-search{
+    padding: 5%;
+}
+#search-box{
+    width: 400px;
+}
+.signup-container{
+    background-color: transparent;
+}
+.signup-img{
+    display: inline-block;
+    width: 300px;
+}
 
 
 

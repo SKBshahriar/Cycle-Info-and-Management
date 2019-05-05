@@ -1,0 +1,30 @@
+@(ads: List[Ads],cycles: List[Cycles],start: Int, end: Int, ofset: Int, limit: Int, page: Int)
+
+@layout("My Ads"){
+    <div id="cycleDiv">
+    @for(i <- ofset until limit){
+        <div class="col-md-2">
+            @*<img  src="@routes.Assets.versioned("images/adimages/"+ads(i).id+"_"+"0"+".jpg")">*@
+            <img id="cycleImg" src="@routes.Assets.versioned("images/adphotos/"+ads(i).id+"_"+"0"+".jpg")">
+            <p>Brand: @cycles(i).brand</p>
+            <p>Model: @cycles(i).model</p>
+            <p>Chassis Number: @ads(i).chassis_number</p>
+            <p>Location: @ads(i).thana , @ads(i).district</p>
+            <p>Price: @ads(i).price</p>
+            <p>Description: @ads(i).description</p>
+        </div>
+    }
+    </div>
+    <nav aria-label="Page navigation example" id="pagination-bar">
+        <ul class="pagination">
+        @for(i <- start until end+1){
+            @if(i == 1){
+                <li class="page-item"><a class="page-link" @if(i == page){id="curentPage" } href="@routes.MarketController.showMyAds()">@i</a></li>
+            }else{
+                <li class="page-item"><a class="page-link" @if(i == page){id="curentPage" } href="\myads?page=@i">@i</a></li>
+            }
+        }
+        </ul>
+    </nav>
+
+}

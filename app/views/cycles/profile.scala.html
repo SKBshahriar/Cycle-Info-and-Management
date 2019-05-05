@@ -1,0 +1,29 @@
+@(user: Users)
+
+@layout("Profile"){
+    @if(flash.containsKey("notfound")){
+        <div class="alert alert-danger" id="alrt">
+            @flash.get("notfound")
+            <a href="#" class="close" data-dismiss="alert" aria-label="close"><i class="glyphicon glyphicon-remove"></i></a>
+        </div>
+    }else{
+        <div class="col-md-3" style="border: 2px solid black">
+            <img src="@routes.Assets.versioned("images/user.png")" id="userimg">
+            <p>Name: @user.name</p>
+            <p>Email: @user.email</p>
+            <p>District: @user.district</p>
+            <p>Thana: @user.thana</p>
+        </div>
+        <div class="col-md-9" style="border: 2px solid black">
+            <img src="@routes.Assets.versioned("images/user.png")" id="userimg">
+            <p>Name: @user.name</p>
+            <p>Email: @user.email</p>
+            <p>District: @user.district</p>
+            <p>Thana: @user.thana</p>
+        </div>
+        @if(session().get("nid") == user.nid){
+            <a href="" >Edit profile</a>
+        }
+
+    }
+}

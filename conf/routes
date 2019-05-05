@@ -26,3 +26,29 @@ GET     /mycycles                   controllers.CycleController.showMyCycles()
 GET     /signup                     controllers.CycleController.signup()
 
 POST    /signup                     controllers.CycleController.signupAuthenticate()
+
+GET     /cycle                      controllers.CycleController.showCycleInfo()
+
+GET     /editcycle                  controllers.CycleController.updateCycle()
+
+POST    /editcycle                  controllers.CycleController.saveUpdate()
+
+GET     /changeowner                controllers.CycleController.changeOwner()
+
+POST    /changeowner                controllers.CycleController.updateOwner()
+
+GET     /test                       controllers.CycleController.test()
+
+GET     /getsrchsgst                controllers.AjaxResponse.getSearchSuggestion()
+
+GET     /search                     controllers.CycleController.showUserSearchResult()
+
+GET     /profile                    controllers.CycleController.profile()
+
+GET     /postad                     controllers.MarketController.postAd()
+
+POST    /savead                     controllers.MarketController.saveAd()
+
+GET     /myads                      controllers.MarketController.showMyAds()
+
+

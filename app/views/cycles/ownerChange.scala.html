@@ -1,0 +1,33 @@
+@(chassis_number: String)
+@import helper._
+
+@layout("Change Ownership"){
+    @if(flash.containsKey("notfound")){
+        <div class="alert alert-danger" id="alrt">
+            @flash.get("notfound")
+            <a href="#" class="close" data-dismiss="alert" aria-label="close"><i class="glyphicon glyphicon-remove"></i></a>
+        </div>
+    }
+    @if(flash.containsKey("password")){
+        <div class="alert alert-danger" id="alrt">
+            @flash.get("password")
+            <a href="#" class="close" data-dismiss="alert" aria-label="close"><i class="glyphicon glyphicon-remove"></i></a>
+        </div>
+    }
+
+    <div id="loginForm">
+        <h1>Change Owner</h1>
+        <form action="@CSRF(routes.CycleController.updateOwner())" method="post">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Email address of new owner</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp" placeholder="Enter email" required>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Your Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" name="pass" placeholder="Password" required>
+            </div>
+            <input type="hidden" name="chassis_number" value="@chassis_number">
+            <button type="submit" class="btn btn-primary">Log in</button>
+        </form>
+    </div>
+}

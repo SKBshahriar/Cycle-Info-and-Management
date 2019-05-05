@@ -1,112 +1,63 @@
 @()
-@import helper._
+    @import helper._
 
 <!DOCTYPE html>
-<html lang="en">
-
-    <head>
-        <title>Log in</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("css/style.css")">
-        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("lib/bootstrap/css/bootstrap.min.css")">
-    </head>
-
-    <body>
-        <nav class="navbar " id="navB">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="@routes.CycleController.index()">CycleInfo</a>
-                </div>
-                <ul class="nav navbar-nav">
-                    <li class="active">
-                        <a href="#"> About</a>
-                    </li>
-                    <li>
-                        <a href="#">Contact Us</a>
-                    </li>
-                    <li>
-                        <a href="#">Help</a>
-                    </li>
-
-                </ul>
-
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="@routes.CycleController.signup()">Sign Up</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-
-        @if(flash.containsKey("duplicate")){
-            <div class="alert alert-danger" id="alrt">
-                @flash.get("duplicate")
-                <a href="#" class="close" data-dismiss="alert" aria-label="close"><i class="glyphicon glyphicon-remove"></i></a>
-            </div>
-        }
-        <div>
-            <img src="@routes.Assets.versioned("images/signup.jpg")" id="loginImg">
-        </div>
-        <div id="loginForm">
-            <form action="@helper.CSRF(routes.CycleController.signupAuthenticate())" method="post">
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Name</label>
-                    <input type="text" class="form-control" id="exampleInputEmail1" name="name" aria-describedby="emailHelp" placeholder="Name">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">NID Number</label>
-                    <input type="text" class="form-control" id="exampleInputEmail1" name="nid" aria-describedby="emailHelp" placeholder="Enter NID">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp" placeholder="Enter email">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">District</label>
-                    <input type="text" class="form-control" id="exampleInputEmail1" name="district" aria-describedby="emailHelp" placeholder="Enter District">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Thana</label>
-                    <input type="text" class="form-control" id="exampleInputEmail1" name="thana" aria-describedby="emailHelp" placeholder="Enter Thana">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Phone Number</label>
-                    <input type="text" class="form-control" id="exampleInputEmail1" name="phone" aria-describedby="emailHelp" placeholder="Enter Phone Number">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" name="pass" placeholder="Enter Password">
-                </div>
-                <button type="submit" class="btn btn-primary">Sign Up</button>
-            </form>
-        </div>
-
-        <div class="footer">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xs-12 col-sm-5">
-                        <ul class="list-unstyled list-inline ">
-                            <li>
-                                <a href="#">Read the blog</a>
-                            </li>
-                            <li>|</li>
-                            <li>
-                                <a href="#">Submit</a>
-                            </li>
-                            <li>|</li>
-                            <li>
-                                <a href="#">Links</a>
-                            </li>
-                        </ul>
+    <html lang="en">
+        <head>
+            <title>Log in</title>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("css/jquery-ui.css")">
+            <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("css/bootstrap.min.css")">
+            <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("css/mdb.min.css")">
+            <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("css/all.css")">
+            <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("css/style.css")">
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+            integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+        </head>
+        <body>
+            <div class="container signup-container">
+                @if(flash.containsKey("duplicate")){
+                    <div class="pt-3">
+                        <div class="alert alert-danger" id="alrt">
+                            @flash.get("duplicate")
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        </div>
                     </div>
-                </div>
+                }
+            <div class="text-center py-5">
+                <img  class="signup-img" src="@routes.Assets.versioned("images/signup.png")">
             </div>
-        </div>
-        <h1></h1>
-
-        <script src="@routes.Assets.versioned("js/jquery.min.js")" type="text/javascript"></script>
-        <script src="@routes.Assets.versioned("lib/bootstrap/js/bootstrap.min.js")" type="text/javascript"></script>
-        <script src="@routes.Assets.versioned("js/custom.js")" type="text/javascript"></script>
-    </body>
-</html>
+            <div class="w-50 mx-auto">
+                <form action="@CSRF(routes.CycleController.signupAuthenticate())" method="post" class="text-center border border-light p-5">
+                    <p class="h4 mb-4">Sign up</p>
+                    <input type="text" id="defaultRegisterPhonePassword" class="form-control mb-4" name="name" placeholder="Name" aria-describedby="defaultRegisterFormPhoneHelpBlock">
+                    <input type="text" id="defaultRegisterPhonePassword" class="form-control mb-4" name="nid" placeholder="NID" aria-describedby="defaultRegisterFormPhoneHelpBlock">
+                    <input type="email" id="defaultRegisterFormEmail" class="form-control mb-4" name="email" placeholder="E-mail">
+                    <div class="form-row mb-4">
+                        <div class="col">
+                            <input type="text" id="defaultRegisterFormFirstName" name="district" class="form-control" placeholder="District">
+                        </div>
+                        <div class="col">
+                            <input type="text" id="defaultRegisterFormLastName" name="thana" class="form-control" placeholder="Thana">
+                        </div>
+                    </div>
+                    <input type="password" id="defaultRegisterFormPassword" class="form-control mb-4" name="pass" placeholder="Password" aria-describedby="defaultRegisterFormPasswordHelpBlock">
+                    <input type="text" id="defaultRegisterPhonePassword" class="form-control mb-4" name="phone" placeholder="Phone number" aria-describedby="defaultRegisterFormPhoneHelpBlock">
+                    <button class="btn btn-info my-4 btn-block" type="submit">Sign in</button>
+                    <p>or sign up with:</p>
+                    <a type="button" class="light-blue-text mx-2"><i class="fab fa-facebook-f"></i></a>
+                    <a type="button" class="light-blue-text mx-2"><i class="fab fa-twitter"></i></a>
+                    <a type="button" class="light-blue-text mx-2"><i class="fab fa-linkedin-in"></i></a>
+                    <a type="button" class="light-blue-text mx-2"><i class="fab fa-github"></i></a>
+                    <hr>
+                </form>
+            </div>
+            </div>
+            <script src="@routes.Assets.versioned("js/jquery.min.js")" type="text/javascript"></script>
+            <script src="@routes.Assets.versioned("js/jquery-ui.js")" type="text/javascript"></script>
+            <script src="@routes.Assets.versioned("js/bootstrap.min.js")" type="text/javascript"></script>
+            <script src="@routes.Assets.versioned("js/mdb.min.js")" type="text/javascript"></script>
+            <script src="@routes.Assets.versioned("js/custom.js")" type="text/javascript"></script>
+        </body>
+    </html>

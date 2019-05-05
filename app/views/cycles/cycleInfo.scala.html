@@ -1,0 +1,38 @@
+@(cycle: Cycles)
+@import java.text.SimpleDateFormat
+@layout("Cycle Info"){
+    @if(flash.containsKey("adsuccess")){
+        <div class="alert alert-success" id="alrt">
+            @flash.get("adsuccess")
+            <a href="#" class="close" data-dismiss="alert" aria-label="close"><i class="glyphicon glyphicon-remove"></i></a>
+        </div>
+    }
+    @if(flash.containsKey("notfound")){
+        <div class="alert alert-danger" id="alrt">
+            @flash.get("notfound")
+            <a href="#" class="close" data-dismiss="alert" aria-label="close"><i class="glyphicon glyphicon-remove"></i></a>
+        </div>
+    }else{
+        <div>
+            <h1>Cycle Information</h1>
+            <img id="cycleImg" src="@routes.Assets.versioned("images/cycle_pic/"+cycle.chassis_number+".jpg")">
+            <p>Chassis Number: @cycle.chassis_number</p>
+            <p>Brand: @cycle.brand</p>
+            <p>Model: @cycle.model</p>
+            <p>Original Price: @cycle.price</p>
+            <p>Date of Buy: @{new SimpleDateFormat("dd-MM-yyyy").format(cycle.date_of_buy)}</p>
+            <input type="hidden" name="chassis_number" value="@cycle.chassis_number">
+
+            @if(session().get("nid") == cycle.users.nid){
+                <p><a href="\editcycle?id=@cycle.chassis_number">Edit info</a></p>
+                <p><a href="\postad?id=@cycle.chassis_number">Post an Ad.</a></p>
+                <p><a href="\changeowner?id=@cycle.chassis_number">Change ownership</a></p>
+            }
+
+            <button id="mybtn" style="background-color: #2d6201;color: white">Click</button>
+            <p id="owner"></p>
+            <button onclick="func()">Click Me</button>
+        </div>
+
+    }
+}

@@ -3,10 +3,12 @@ package models;
 import java.util.Date;
 import javax.validation.constraints.*;
 import io.ebean.*;
-import play.data.validation.*;
-import play.data.format.*;
 import javax.persistence.*;
-import javax.validation.constraints.*;
+
+//@Table(
+//        uniqueConstraints=
+//        @UniqueConstraint(columnNames={"name", "brand"})
+//)
 
 @Entity
 public class Cycles extends Model{
@@ -33,7 +35,7 @@ public class Cycles extends Model{
 
     public static final Finder<String, Cycles> find = new Finder<>(Cycles.class);
 
-    @ManyToOne()
+    @ManyToOne(cascade = CascadeType.ALL)
     public Users users;
 
 
